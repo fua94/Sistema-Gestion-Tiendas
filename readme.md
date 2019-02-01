@@ -12,3 +12,15 @@ Dependencias:
 - Oracle 11g
 - Primefaces
 
+Modulos desarrollados:
+
+- Entregas
+- Reclamos
+- Existencias (Inventario)
+
+Modulos Faltantes:
+
+- Ventas
+- Proveedores
+- Clientes
+
