@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    <h:head>
+        <title>Gestion Tienda de Regalos</title>
+    </h:head>
+    <h:body>
+        <p:layout fullPage="true">
+            <ui:include src="Plantilla.xhtml" />    
+            <p:layoutUnit position="center">
+                <h:form id="form1">
+                <p:dataTable id="tabla1" value="#{existencia.listaexistencias}" var="dato" 
+                             rows="10" rowsPerPageTemplate="5,10,50,100" paginator="true" style="text-align: center;">
+                        <p:column headerText="N" style="width:30px;" sortBy="#{dato.exicodigo}">
+                            <h:outputText value="#{dato.exicodigo}"></h:outputText>
+                        </p:column>
+                        <p:column headerText="Cantidad" sortBy="#{dato.exicantidad}">
+                            <h:outputText value="#{dato.exicantidad}"></h:outputText>
+                        </p:column>
+                        <p:column headerText="Costo" sortBy="#{dato.exicosto}">
+                            <h:outputText value="#{dato.exicosto}"></h:outputText>
+                        </p:column>
+                        <p:column headerText="Fecha Ingreso" sortBy="#{dato.exifechaingreso}">
+                            <h:outputText value="#{dato.exifechaingreso}"></h:outputText>
+                        </p:column>
+                        <p:column headerText="Producto" sortBy="#{dato.procodigo.prodescripcion}" filterBy="#{dato.procodigo.prodescripcion}">
+                            <h:outputText value="#{dato.procodigo.prodescripcion}"></h:outputText>
+                        </p:column>
+                        <p:column headerText="Proveedor" sortBy="#{dato.pvdruc.pvdnombre}" filterBy="#{dato.pvdruc.pvdnombre}">
+                            <h:outputText value="#{dato.pvdruc.pvdnombre}"></h:outputText>
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+            </p:layoutUnit>
+        </p:layout>
+    </h:body>
+</html>
+

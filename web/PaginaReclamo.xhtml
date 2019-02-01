@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    
+    <h:head>
+        <title>Gestion Tienda de Regalos</title>
+    </h:head>
+    <h:body>
+        <p:layout fullPage="true">
+            <ui:include src="Plantilla.xhtml" />    
+            <p:layoutUnit position="center">
+                <h:form id="form1">
+                    <p:messages id="m_msg" showDetail="true" closable="true" />
+                    <p:growl id="g_msg" showDetail="true" life="2000"/>
+                    <p:panelGrid columns="2">
+                        <p:outputLabel value="Factura:" />
+                        <p:inputText value="#{reclamo.vencodigo.vencodigo}" required="true">
+                            <p:ajax event="blur" update="g_msg" listener="#{reclamo.verificarVenta()}"/>
+                        </p:inputText>
+                        <p:outputLabel value="Descripcion:" />
+                        <p:inputTextarea rows="6" cols="33" value="#{reclamo.recdescripcion}" required="true"/>
+                        <p:commandButton update="m_msg" value="Ingresar" actionListener="#{reclamo.ingresar()}"/>
+                    </p:panelGrid>
+                </h:form>
+            </p:layoutUnit>
+        </p:layout>
+    </h:body>
+</html>

@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    
+    <h:head>
+        <title>Gestion Tienda de Regalos</title>
+    </h:head>
+    <h:body>
+        <p:layout fullPage="true">
+            <ui:include src="Plantilla.xhtml" />    
+            <p:layoutUnit position="center">
+                <h:form id="form1">
+                    <p:growl id="g_msg" showDetail="true" life="2000"/>
+                    <p:panelGrid columns="2">
+                        <p:outputLabel value="Proveedor: " />
+                        <p:inputText  id="it_prov" value="#{existencia.pvdruc.pvdruc}" required="true">
+                            <p:ajax event="blur" update="g_msg" listener="#{existencia.verificarProveedor()}"/>
+                        </p:inputText>
+                        <p:outputLabel value="Producto: " />
+                        <p:inputText  id="it_prod" value="#{existencia.procodigo.procodigo}" required="true">
+                            <p:ajax event="blur" update="g_msg" listener="#{existencia.verificarProducto()}"/>
+                        </p:inputText>
+                        <p:outputLabel value="Cantidad: " />
+                        <p:inputText  id="it_cant" value="#{existencia.exicantidad}" />
+                        <p:outputLabel value="Costo: " />
+                        <p:inputText  id="it_cost" value="#{existencia.exicosto}" />
+                        <p:commandButton update="g_msg" value="Ingresar" actionListener="#{existencia.ingresar()}"/>
+                    </p:panelGrid>                        
+                </h:form>
+            </p:layoutUnit>
+        </p:layout>
+    </h:body>
+</html>
+
+
+

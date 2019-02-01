@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>Gestion Tienda de Regalos</title>
+    </h:head>
+    <h:body>
+        <p:layout fullPage="true">
+            <ui:include src="Plantilla.xhtml" />    
+            <p:layoutUnit position="center">
+                <h:form id="form1">
+                    <p:messages id="m_msg" showDetail="true" closable="true" />
+                    <p:growl id="g_msg" showDetail="true" life="2000"/>
+                    <p:panelGrid columns="2">
+                        <p:outputLabel value="Factura:" />
+                        <p:inputText value="#{entrega.vencodigo.vencodigo}" required="true">
+                            <p:ajax event="blur" update="g_msg" listener="#{entrega.verificarVenta()}"/>
+                        </p:inputText>
+                        <p:outputLabel value="Para:" />
+                        <p:inputText value="#{entrega.entdestinatario}" required="true"/>
+                        <p:outputLabel value="Direccion:" />
+                        <p:inputText value="#{entrega.entdireccion}" required="true"/>
+                        <p:outputLabel value="Fecha de Entrega:" />
+                        <p:calendar value="#{entrega.entfechaentrega}" showOn="button" required="true"/>
+                        <p:commandButton update="m_msg" value="Ingresar" actionListener="#{entrega.ingresar()}"/>
+                    </p:panelGrid>
+                </h:form>
+            </p:layoutUnit>
+        </p:layout>
+    </h:body>
+</html>

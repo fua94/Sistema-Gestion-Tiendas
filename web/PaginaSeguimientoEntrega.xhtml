@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    <h:head>
+        <title>Gestion Tienda de Regalos</title>
+    </h:head>
+    <h:body>
+        <p:layout fullPage="true">
+            <ui:include src="Plantilla.xhtml" />    
+            <p:layoutUnit position="center">
+                <h:form id="form1">
+                    <p:messages id="m_msg" showDetail="true" closable="true" />
+                    <p:growl id="g_msg" showDetail="true" life="2000"/>
+                    <p:panelGrid columns="2">
+                        <p:outputLabel value="Ticked:" />
+                        <p:inputText value="#{entrega.entcodigo}" required="true">
+                            <p:ajax event="blur" update="g_msg" listener="#{entrega.verificarTicket()}"/>
+                        </p:inputText>
+                        <p:outputLabel value="Estado:" />
+                        <p:selectOneRadio value="#{entrega.entestado}" layout="grid" columns="1">
+                            <f:selectItem itemLabel="Entregado" itemValue="E" />
+                            <f:selectItem itemLabel="No entregado" itemValue="N" />                            
+                        </p:selectOneRadio>
+                        <p:commandButton update="m_msg" value="Guardar" actionListener="#{entrega.actualizar()}"/>
+                    </p:panelGrid>
+                </h:form>
+            </p:layoutUnit>
+        </p:layout>
+    </h:body>
+</html>
+

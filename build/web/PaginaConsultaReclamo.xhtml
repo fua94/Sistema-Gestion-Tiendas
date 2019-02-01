@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>Gestion Tienda de Regalos</title>
+    </h:head>
+    <h:body>
+        <p:layout fullPage="true">
+            <ui:include src="Plantilla.xhtml" />    
+            <p:layoutUnit position="center">
+                <h:form id="form3">
+                    <p:dataTable id="tabla1" value="#{reclamo.listareclamos}" var="dato" 
+                                 paginator="true" rows="10" rowsPerPageTemplate="5,10,50,100" sortBy="#{dato.reccodigo}" style="text-align: center;">
+                        <p:column headerText="Ticket" sortBy="#{dato.reccodigo}" filterBy="#{dato.reccodigo}">
+                            <h:outputText value="#{dato.reccodigo}"></h:outputText>
+                        </p:column>
+                        <p:column headerText="Cliente" sortBy="#{dato.vencodigo.clicedula.clicedula}" filterBy="#{dato.vencodigo.clicedula.clicedula}">
+                            <h:outputText value="#{dato.vencodigo.clicedula.clicedula}"></h:outputText>
+                        </p:column>
+                        <p:column headerText="Descripción">
+                            <h:outputText value="#{dato.recdescripcion}"></h:outputText>
+                        </p:column>
+                        <p:column headerText="Fecha Ingreso" sortBy="#{dato.recfechaingreso}" filterBy="#{dato.recfechaingreso}">
+                            <h:outputText value="#{dato.recfechaingreso}"></h:outputText>
+                        </p:column>
+                        <p:column headerText="Estado" sortBy="#{dato.recestado}" filterBy="#{dato.recestado}">
+                            <h:outputText value="#{dato.recestado}"></h:outputText>
+                        </p:column>
+                        <p:column headerText="Fecha Solución" sortBy="#{dato.recfechafin}">
+                            <h:outputText value="#{dato.recfechafin}"></h:outputText>
+                        </p:column>
+                    </p:dataTable>
+                    </h:form>
+            </p:layoutUnit>
+        </p:layout>
+    </h:body>
+</html>
+
